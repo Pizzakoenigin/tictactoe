@@ -6,7 +6,6 @@ import Status from "./Status"
 export default function Board() {
     const [squares, setSquares] = useState(Array(9).fill(null))
     const [xIsNext, setXIsNext] = useState(true)
-    const [message, setMessage] = useState('')
 
     function calculateWinner(squares) {
         const lines = [
@@ -23,22 +22,14 @@ export default function Board() {
         for (let i = 0; i < lines.length; i++) {
             const [a, b, c] = lines[i];
             if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-                setMessage(`${squares[a]} won!`)
                 return squares[a]
             }
         }
         return null
     }
+    
 
     function handleClick(i) {
-
-        // const winner = calculateWinner(squares);
-        // if (winner) {
-        //     setMessage(`${winner} won!`)
-        // } else {
-            setMessage(`Next player ${xIsNext ? '0' : 'X'}`)
-        // }
-
         if (squares[i] || calculateWinner(squares)) {
             return
         }
@@ -54,7 +45,13 @@ export default function Board() {
         setXIsNext(!xIsNext)
     }
 
-
+    const winner = calculateWinner(squares);
+    let message;
+    if (winner) {
+        message = `${winner} won!`
+    } else {
+        message = `Next player ${xIsNext ? 'X' : '0'}`
+    }
 
     return (
         <>
