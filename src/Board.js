@@ -3,17 +3,17 @@ import Square from "./Square"
 export default function Board() {
     return (
         <div id="board">
-            <div className="top-row">
+            <div className="top-row row">
                 <Square></Square>
                 <Square></Square>
                 <Square></Square>
             </div>
-            <div className="middle-row">
+            <div className="middle-row row">
                 <Square></Square>
                 <Square></Square>
                 <Square></Square>
             </div>
-            <div className="bottom-row">
+            <div className="bottom-row row">
                 <Square></Square>
                 <Square></Square>
                 <Square></Square>

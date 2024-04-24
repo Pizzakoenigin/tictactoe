@@ -7,15 +7,22 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;  
-}
+  color: white;
 
-.square {
-  width: 5vw;
-  height: 5vw;
-  margin: 0.1em;
-}
+  .row {
+    display: flex;
 
-.square:hover {
-  cursor: pointer;
+    .square {
+      width: 5vw;
+      height: 5vw;
+      margin: 0.1em;
+      display: block;
+    }
+
+    .square:hover {
+      cursor: pointer;
+    }
+  }
+
+
 }
