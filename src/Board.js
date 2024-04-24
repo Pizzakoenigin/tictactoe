@@ -2,7 +2,7 @@ import Square from "./Square"
 
 export default function Board() {
     return (
-        <div>
+        <div id="board">
             <div className="top-row">
                 <Square></Square>
                 <Square></Square>
