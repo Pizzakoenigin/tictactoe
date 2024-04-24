@@ -2,6 +2,7 @@ import { useState } from "react"
 
 import Square from "./Square"
 import Status from "./Status"
+import Restart from "./Restart"
 
 export default function Board() {
     const [squares, setSquares] = useState(Array(9).fill(null))
@@ -45,6 +46,11 @@ export default function Board() {
         setXIsNext(!xIsNext)
     }
 
+    function restartGame(){
+        console.log(squares);
+        setSquares(Array(9).fill(null))
+    }
+
     const winner = calculateWinner(squares);
     let message;
     if (winner) {
@@ -73,6 +79,7 @@ export default function Board() {
                 </div>
             </div>
             <Status message={message} />
+            <Restart onRestartClick = {restartGame}/>
         </>
     )
 }
