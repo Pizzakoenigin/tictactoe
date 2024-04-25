@@ -1,12 +1,30 @@
-import { useState } from "react"
-
 import Square from "./Square"
 import Status from "./Status"
 import Restart from "./Restart"
 
-export default function Board() {
-    const [squares, setSquares] = useState(Array(9).fill(null))
-    const [xIsNext, setXIsNext] = useState(true)
+export default function Board({ xIsNext, squares, onPlay }) {
+    function handleClick(i) {
+        if (squares[i] || calculateWinner(squares)) {
+            return
+        }
+
+        const nextSquares = squares.slice();
+        if (xIsNext) {
+            nextSquares[i] = "X";
+        }
+        else {
+            nextSquares[i] = "0";
+        }
+        onPlay(nextSquares);
+    }
+
+    const winner = calculateWinner(squares);
+    let message;
+    if (winner) {
+        message = `${winner} won!`
+    } else {
+        message = `Next player ${xIsNext ? 'X' : '0'}`
+    }
 
     function calculateWinner(squares) {
         const lines = [
@@ -28,36 +46,16 @@ export default function Board() {
         }
         return null
     }
-    
 
-    function handleClick(i) {
-        if (squares[i] || calculateWinner(squares)) {
-            return
-        }
 
-        const nextSquares = squares.slice();
-        if (xIsNext) {
-            nextSquares[i] = "X";
-        }
-        else {
-            nextSquares[i] = "0";
-        }
-        setSquares(nextSquares);
-        setXIsNext(!xIsNext)
-    }
 
-    function restartGame(){
+
+    function restartGame() {
         console.log(squares);
-        setSquares(Array(9).fill(null))
+        
     }
 
-    const winner = calculateWinner(squares);
-    let message;
-    if (winner) {
-        message = `${winner} won!`
-    } else {
-        message = `Next player ${xIsNext ? 'X' : '0'}`
-    }
+
 
     return (
         <>
@@ -79,7 +77,7 @@ export default function Board() {
                 </div>
             </div>
             <Status message={message} />
-            <Restart onRestartClick = {restartGame}/>
+            <Restart onRestartClick={restartGame} />
         </>
     )
 }
