@@ -1,6 +1,5 @@
 import Square from "./Square"
 import Status from "./Status"
-import Restart from "./Restart"
 
 export default function Board({ xIsNext, squares, onPlay }) {
     function handleClick(i) {
@@ -47,11 +46,6 @@ export default function Board({ xIsNext, squares, onPlay }) {
         return null
     }
 
-
-
-
-
-
     return (
         <>
             <div id="board">
@@ -72,8 +66,6 @@ export default function Board({ xIsNext, squares, onPlay }) {
                 </div>
             <Status message={message} />    
             </div>
-            
-
         </>
     )
 }
