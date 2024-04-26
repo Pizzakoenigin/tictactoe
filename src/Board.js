@@ -50,11 +50,6 @@ export default function Board({ xIsNext, squares, onPlay }) {
 
 
 
-    function restartGame() {
-        // console.log(squares);
-        
-    }
-
 
 
     return (
@@ -77,7 +72,7 @@ export default function Board({ xIsNext, squares, onPlay }) {
                 </div>
             </div>
             <Status message={message} />
-            <Restart onRestartClick={restartGame} />
+
         </>
     )
 }
