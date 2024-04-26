@@ -51,7 +51,7 @@ export default function Board({ xIsNext, squares, onPlay }) {
 
 
     function restartGame() {
-        console.log(squares);
+        // console.log(squares);
         
     }
 
