@@ -3,14 +3,16 @@ import Board from "./Board"
 import Restart from "./Restart";
 
 export default function Game() {
-    const [xIsNext, setXIsNext] = useState(true);
     const [history, setHistory] = useState([Array(9).fill(null)]);
-    const [currentMove, setCurrentMove] = useState(0)
-    const currentSquares = history[history.length - 1];
+    const [currentMove, setCurrentMove] = useState(0);
+    const xIsNext  = currentMove % 2 === 0;
+    const currentSquares = history[currentMove];
 
     function handlePlay(nextSquares) {
-        setHistory([...history, nextSquares]);
-        setXIsNext(!xIsNext);
+        // setHistory([...history, nextSquares]);
+        const nextHistory = [...history.slice(0, currentMove + 1), nextSquares];
+        setHistory(nextHistory);
+        setCurrentMove(nextHistory.length - 1)
     }
 
     function restartGame() {
@@ -18,6 +20,7 @@ export default function Game() {
     }
 
     function jumpTo(nextMove){
+        setCurrentMove(nextMove);
 
     } 
 
@@ -26,7 +29,7 @@ export default function Game() {
         if (move > 0) {
             description = 'Go to move #' + move;
         } else {
-            description = 'Go to game start';
+            description = 'Restart';
         }
         return (
             <button onClick={() => jumpTo(move)} key={move}>{description}</button>
