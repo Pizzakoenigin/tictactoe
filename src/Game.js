@@ -5,7 +5,7 @@ import Restart from "./Restart";
 export default function Game() {
     const [history, setHistory] = useState([Array(9).fill(null)]);
     const [currentMove, setCurrentMove] = useState(0);
-    const xIsNext  = currentMove % 2 === 0;
+    const xIsNext = currentMove % 2 === 0;
     const currentSquares = history[currentMove];
 
     function handlePlay(nextSquares) {
@@ -19,10 +19,10 @@ export default function Game() {
 
     }
 
-    function jumpTo(nextMove){
+    function jumpTo(nextMove) {
         setCurrentMove(nextMove);
 
-    } 
+    }
 
     const moves = history.map((squares, move) => {
         let description;
@@ -32,15 +32,21 @@ export default function Game() {
             description = 'Restart';
         }
         return (
-            <button onClick={() => jumpTo(move)} key={move}>{description}</button>
+            <button
+                onClick={() => jumpTo(move)}
+                key={move}
+                className="historyButtons"
+                >
+                {description}
+            </button>
         )
     })
 
     return (
         <>
-            <Board xIsNext = { xIsNext } squares={currentSquares} onPlay={handlePlay} />
+            <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
             {/* <Restart onRestartClick={restartGame} /> */}
-            <div>{moves}</div>
+            <div id="history">{moves}</div>
         </>
     )
 }

@@ -3,24 +3,48 @@
   background-color: #1f283b;
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  gap: 0.5em;;
 
-  .row {
+  #board {
     display: flex;
+    flex-direction: column;
+    align-items: center;
 
-    .square {
-      width: 5vw;
-      height: 5vw;
-      margin: 0.1em;
-      display: block;
+    .row {
+      display: flex;
+
+      .square {
+        width: 7vw;
+        height: 7vw;
+        margin: 0.1em;
+        display: block;
+      }
+
+      .square:hover {
+        cursor: pointer;
+        /* color: white; */
+      }
     }
+  }
 
-    .square:hover {
-      cursor: pointer;
+
+
+  #history {
+    display: flex;
+    flex-direction: column;
+
+    .historyButtons{
+      border: none;
+      background-color: #434854;
+      color: white;
+      margin: 0.1em;
+      padding: 0.7em;
+      border-radius: 0.7rem;
     }
   }
 
