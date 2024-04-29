@@ -22,7 +22,7 @@ export default function Board({ xIsNext, squares, onPlay }) {
     if (winner) {
         message = `${winner} won!`
     } else {
-        message = `Next player ${xIsNext ? 'X' : '0'}`
+        message = `Next player: ${xIsNext ? 'X' : '0'}`
     }
 
     function calculateWinner(squares) {
@@ -49,6 +49,7 @@ export default function Board({ xIsNext, squares, onPlay }) {
     return (
         <>
             <div id="board">
+            <Status message={message} /> 
                 <div className="top-row row">
                     <Square value={squares[0]} onSquareClick={() => handleClick(0)} />
                     <Square value={squares[1]} onSquareClick={() => handleClick(1)} />
@@ -64,7 +65,7 @@ export default function Board({ xIsNext, squares, onPlay }) {
                     <Square value={squares[7]} onSquareClick={() => handleClick(7)} />
                     <Square value={squares[8]} onSquareClick={() => handleClick(8)} />
                 </div>
-            <Status message={message} />    
+               
             </div>
         </>
     )
